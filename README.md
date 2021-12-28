@@ -59,9 +59,9 @@ We process the MNIST dataset as follows for regarding as a sequential form.
     <td><img src="./figures/reconstruction/movie_reconstruction_6.gif" width="450"></td>
   </tr>
   <tr>
-    <td>y</td>
-    <td><img src="./figures/attention/movie_attention_y.gif" width="300"></td>
-    <td><img src="./figures/reconstruction/movie_reconstruction_y.gif" width="450"></td>
+    <td>7</td>
+    <td><img src="./figures/attention/movie_attention_7.gif" width="300"></td>
+    <td><img src="./figures/reconstruction/movie_reconstruction_7.gif" width="450"></td>
   </tr>
   <tr>
     <td>8</td>
