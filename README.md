@@ -2,10 +2,7 @@
 =====
 TensorFlow implementation of "Attention is all you need (Transformer)"
 
-## Training
-<img src="./figures/Transformer_loss_mean.svg" width="800">  
-
-## Results
+## Dataset  
 
 We use the MNIST dataset for confirming the working of the transformer.  
 We process the MNIST dataset as follows for regarding as a sequential form.  
@@ -19,6 +16,14 @@ We process the MNIST dataset as follows for regarding as a sequential form.
       * F (Feature) = 18  
 * Specify the target Y as an inverse sequence of X to differentiate the input sequence from the target sequence.  
   * In the figure, the data is shown in an upside-down form.  
+
+## Results
+
+### Training  
+
+  <img src="./figures/Transformer_loss_mean.svg" width="800">  
+
+### Generation  
 
 <table>
   <tr>
