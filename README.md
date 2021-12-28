@@ -4,8 +4,8 @@ TensorFlow implementation of "Attention is all you need (Transformer)"
 
 ## Dataset  
 
-We use the MNIST dataset for confirming the working of the transformer.  
-We process the MNIST dataset as follows for regarding as a sequential form.  
+The MNIST dataset is used for confirming the working of the transformer.  
+The dataset is processed as follows for regarding as a sequential form.  
 * Trim off the sides from the square image.  
   * (H X W) -> (H X W_trim)  
     * H (Height) = W (Width) = 28  
