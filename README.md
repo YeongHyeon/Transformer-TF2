@@ -2,6 +2,9 @@
 =====
 TensorFlow implementation of "Attention is all you need (Transformer)"
 
+## Training
+<img src="./figures/Transformer_loss_mean.svg" width="800">  
+
 ## Results
 
 We use the MNIST dataset for confirming the working of the transformer.  
