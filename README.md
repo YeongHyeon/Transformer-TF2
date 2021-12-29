@@ -85,7 +85,7 @@ The dataset is processed as follows for regarding as a sequential form.
 
 ## Requirements
 * Tensorflow 2.4.0  
-* <a>whiteboxlayer</a> 0.2.1
+* <a href="https://github.com/YeongHyeon/white-box-layer">whiteboxlayer</a> 0.2.1
 
 ## Reference
 [1] Vaswani, Ashish, et al. <a href="https://arxiv.org/abs/1706.03762">Attention is all you need.</a> Advances in neural information processing systems. 2017.
