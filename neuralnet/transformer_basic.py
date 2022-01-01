@@ -141,20 +141,20 @@ class Neuralnet(tf.Module):
             try: del dict_enc
             except: pass
             dict_enc = wblat.self_attention(layer=self.layer, x_query=x, x_key=x, x_value=x, num_head=num_head, mask_idx=mask_idx, udmask=udmask, \
-                name='%s_atn_0' %(name), verbose=verbose)
+                name='%s_%d_atn_0' %(name, idx_depth), verbose=verbose)
             attention_drop = self.layer.dropout(x=dict_enc['output'], rate=0.1, \
-                name='%s_atn_dout_0_%d' %(name, depth))
+                name='%s_%d_atn_dout_0' %(name, idx_depth))
             y_0 = self.layer.layer_normalization(x=x+attention_drop, trainable=True, \
-                name='%s_atn_ln_0_%d' %(name, depth), verbose=verbose)
+                name='%s_%d_atn_ln_0' %(name, idx_depth), verbose=verbose)
             dict_enc['ln0'] = y_0
 
             fnn_out = wblat.feed_forward_network(layer=self.layer, x=y_0, dim_ff=self.dim_ff, dim_model=self.dim_model, \
-                name='%s_ffn_%d' %(name, depth), verbose=verbose)
+                name='%s_%d_ffn' %(name, idx_depth), verbose=verbose)
             dict_enc['ffn'] = fnn_out
             fnn_drop = self.layer.dropout(x=fnn_out, rate=0.1, \
-                name='%s_ffn_dout_0_%d' %(name, depth))
+                name='%s_%d_ffn_dout_0' %(name, idx_depth))
             y_1 = self.layer.layer_normalization(x=y_0+fnn_drop, trainable=True, \
-                name='%s_ffn_ln_0_%d' %(name, depth), verbose=verbose)
+                name='%s_%d_ffn_ln_0' %(name, idx_depth), verbose=verbose)
             dict_enc['ln1'] = y_1
             x = y_1
 
@@ -169,28 +169,28 @@ class Neuralnet(tf.Module):
             try: del dict_dec1, dict_dec2
             except: pass
             dict_dec1 = wblat.self_attention(layer=self.layer, x_query=x, x_key=x, x_value=x, num_head=num_head, mask_idx=mask_idx, udmask=udmask, \
-                name='%s_atn_0' %(name), verbose=verbose)
+                name='%s_%d_atn_0' %(name, idx_depth), verbose=verbose)
             attention_drop0 = self.layer.dropout(x=dict_dec1['output'], rate=0.1, \
-                name='%s_atn_dout_0' %(name))
+                name='%s_%d_atn_dout_0' %(name, idx_depth))
             y_0 = self.layer.layer_normalization(x=x+attention_drop0, trainable=True, \
-                name='%s_atn_ln_0' %(name), verbose=verbose)
+                name='%s_%d_atn_ln_0' %(name, idx_depth), verbose=verbose)
             dict_dec1['ln0'] = y_0
 
             dict_dec2 = wblat.self_attention(layer=self.layer, x_query=x, x_key=y_enc, x_value=y_enc, num_head=num_head, mask_idx=mask_idx, udmask=udmask, \
-                name='%s_atn_1' %(name), verbose=verbose)
+                name='%s_%d_atn_1' %(name, idx_depth), verbose=verbose)
             attention_drop1 = self.layer.dropout(x=dict_dec2['output'], rate=0.1, \
-                name='%s_atn_dout_1' %(name))
+                name='%s_%d_atn_dout_1' %(name, idx_depth))
             y_1 = self.layer.layer_normalization(x=y_0+attention_drop1, trainable=True, \
-                name='%s_atn_ln_1' %(name), verbose=verbose)
+                name='%s_%d_atn_ln_1' %(name, idx_depth), verbose=verbose)
             dict_dec2['ln1'] = y_1
 
             fnn_out = wblat.feed_forward_network(layer=self.layer, x=y_1, dim_ff=self.dim_ff, dim_model=self.dim_model, \
-                name='%s_ffn' %(name), verbose=verbose)
+                name='%s_%d_ffn' %(name, idx_depth), verbose=verbose)
             dict_dec2['ffn'] = fnn_out
             fnn_drop = self.layer.dropout(x=fnn_out, rate=0.1, \
-                name='%s_ffn_dout_0' %(name))
+                name='%s_%d_ffn_dout_0' %(name, idx_depth))
             y_2 = self.layer.layer_normalization(x=y_1+fnn_drop, trainable=True, \
-                name='%s_ffn_ln_0' %(name), verbose=verbose)
+                name='%s_%d_ffn_ln_0' %(name, idx_depth), verbose=verbose)
             dict_dec2['ln2'] = y_2
             x = y_2
 
